@@ -29,6 +29,9 @@
     "landing-e2e": {
       "tags": [],
       "implicitDependencies": ["landing"]
+    },
+    "api": {
+      "tags": []
     }
   }
 }
