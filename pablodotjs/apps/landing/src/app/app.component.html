@@ -13,3 +13,22 @@
     <small>Development</small>
   </section>
 </header>
+<section class="ppj--landing-content">
+  <div style="text-align: center;">
+    <h3>Content</h3>
+  </div>
+  <ng-container *ngIf="apps$ | async as apps">
+    <div>
+      <ul>
+        <ng-container *ngFor="let app of apps;">
+          <li>
+            <div>
+              <span>{{ app.title }}</span><br>
+              <span>{{ app.description }}</span>
+            </div>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </ng-container>
+</section>
