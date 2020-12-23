@@ -1,0 +1,11 @@
+<ng-container *ngIf="!!data">
+    <div class="pjs-card--container">
+        <div class="pjs-card--header">
+            <h3>{{ data?.title }}</h3>
+        </div>
+        <hr>
+        <div class="pjs-card--content">
+            <p>{{ data?.description }}</p>
+        </div>
+    </div>
+</ng-container>

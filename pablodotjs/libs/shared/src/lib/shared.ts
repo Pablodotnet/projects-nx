@@ -4,6 +4,7 @@ export function shared(): string {
 
 // Interfaces
 export interface AppItem {
+  id: string;
   title: string;
   description: string;
 }

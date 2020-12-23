@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pablodotjs/shared": ["libs/shared/src/index.ts"]
+      "@pablodotjs/shared": ["libs/shared/src/index.ts"],
+      "@pablodotjs/loui": ["libs/loui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

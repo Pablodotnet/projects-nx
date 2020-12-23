@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
+// UI Library
+import { LouiModule } from '@pablodotjs/loui';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -9,6 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    LouiModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

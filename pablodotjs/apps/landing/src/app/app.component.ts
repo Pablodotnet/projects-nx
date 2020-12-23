@@ -21,4 +21,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.apps$ = this.mainApi.getAllApps();
   }
+
+  handleSelectProject(appId: string): void {
+    console.log('appId: ', appId);
+  }
 }

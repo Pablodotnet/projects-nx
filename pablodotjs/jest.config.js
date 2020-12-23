@@ -3,5 +3,6 @@ module.exports = {
     '<rootDir>/apps/landing',
     '<rootDir>/apps/api',
     '<rootDir>/libs/shared',
+    '<rootDir>/libs/loui',
   ],
 };

@@ -198,6 +198,32 @@
           }
         }
       }
+    },
+    "loui": {
+      "projectType": "library",
+      "root": "libs/loui",
+      "sourceRoot": "libs/loui/src",
+      "prefix": "pablodotjs",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/loui/tsconfig.lib.json",
+              "libs/loui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/loui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/loui"],
+          "options": {
+            "jestConfig": "libs/loui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
