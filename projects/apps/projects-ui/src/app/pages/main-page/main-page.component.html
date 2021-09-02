@@ -1,0 +1,16 @@
+<section class="main-page">
+    <div>
+        <input type="text" [ngModel]="inputModel" (ngModelChange)="handleInputChange($event)">
+        <ng-container *ngIf="pokemonList$ | async as pokemonList">
+            <ng-container *ngIf="!!inputModel.length">
+                <div class="main-page--results-list">
+                    <ng-container *ngFor="let pokemon of pokemonList | filterByInput:inputModel">
+                        <div class="main-page--results-list-item">
+                            {{ pokemon.content }}
+                        </div>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+.dou-game--common-border {
+    border: 1px solid black;
+}
+
+.dou-game--common-hover-border {
+    border: 1px solid blue;
+    border-radius: 2px;
+}
+
+.dou-game {
+    width: 35rem;
+    height: 35rem;
+    background-color: #BAB9BB;
+
+    &-display-flex {
+        display: flex;
+    }
+
+    &--first-row {
+        @extend .dou-game-display-flex;
+        height: 20%;
+    }
+
+    &--second-row {
+        @extend .dou-game-display-flex;
+        height: 60%;
+    }
+
+    &--third-row {
+        @extend .dou-game-display-flex;
+        height: 20%;
+    }
+
+    &--corner {
+        width: 20%;
+        @extend .dou-game--common-border;
+    }
+
+    &--horizontal-button {
+        background-color: #7BB1DA;
+        cursor: pointer;
+        width: 60%;
+        @extend .dou-game--common-border;
+        &:hover {
+            @extend .dou-game--common-hover-border;
+        }
+    }
+
+    &--vertical-button {
+        background-color: #7BB1DA;
+        cursor: pointer;
+        width: 20%;
+        @extend .dou-game--common-border;
+        &:hover {
+            @extend .dou-game--common-hover-border;
+        }
+    }
+
+    &--center {
+        width: 60%;
+        @extend .dou-game--common-border;
+    }
+
+    &--center-item {
+        height: 5rem;
+        width: 5rem;
+        background-color: white;
+        border-radius: 2rem;
+    }
+}

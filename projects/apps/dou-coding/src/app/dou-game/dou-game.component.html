@@ -1,0 +1,31 @@
+<div class="dou-game">
+    <div class="dou-game--first-row">
+        <div class="dou-game--corner">
+        </div>
+        <div class="dou-game--horizontal-button" (click)="handleDirectionChange('up')">
+        </div>
+        <div class="dou-game--corner">
+        </div>
+    </div>
+    <div class="dou-game--second-row">
+        <div class="dou-game--vertical-button" (click)="handleDirectionChange('left')">
+        </div>
+        <div class="dou-game--center">
+            <div
+                class="dou-game--center-item"
+                [style.margin-left.%]="marginX"
+                [style.margin-top.%]="marginY">
+            </div>
+        </div>
+        <div class="dou-game--vertical-button" (click)="handleDirectionChange('right')">
+        </div>
+    </div>
+    <div class="dou-game--third-row">
+        <div class="dou-game--corner">
+        </div>
+        <div class="dou-game--horizontal-button" (click)="handleDirectionChange('down')">
+        </div>
+        <div class="dou-game--corner">
+        </div>
+    </div>
+</div>

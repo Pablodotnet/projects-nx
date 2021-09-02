@@ -1,0 +1,327 @@
+{
+  "version": 1,
+  "projects": {
+    "dou-coding": {
+      "projectType": "application",
+      "root": "apps/dou-coding",
+      "sourceRoot": "apps/dou-coding/src",
+      "prefix": "projects",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/dou-coding",
+            "index": "apps/dou-coding/src/index.html",
+            "main": "apps/dou-coding/src/main.ts",
+            "polyfills": "apps/dou-coding/src/polyfills.ts",
+            "tsConfig": "apps/dou-coding/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/dou-coding/src/favicon.ico",
+              "apps/dou-coding/src/assets"
+            ],
+            "styles": ["apps/dou-coding/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/dou-coding/src/environments/environment.ts",
+                  "with": "apps/dou-coding/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "dou-coding:build:production"
+            },
+            "development": {
+              "browserTarget": "dou-coding:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dou-coding:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/dou-coding/src/**/*.ts",
+              "apps/dou-coding/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dou-coding"],
+          "options": {
+            "jestConfig": "apps/dou-coding/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dou-coding-e2e": {
+      "root": "apps/dou-coding-e2e",
+      "sourceRoot": "apps/dou-coding-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dou-coding-e2e/cypress.json",
+            "devServerTarget": "dou-coding:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dou-coding:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/dou-coding-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "projects-api": {
+      "root": "apps/projects-api",
+      "sourceRoot": "apps/projects-api/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/projects-api",
+            "main": "apps/projects-api/src/main.ts",
+            "tsConfig": "apps/projects-api/tsconfig.app.json",
+            "assets": ["apps/projects-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/projects-api/src/environments/environment.ts",
+                  "with": "apps/projects-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "projects-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/projects-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/projects-api"],
+          "options": {
+            "jestConfig": "apps/projects-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "projects-ui": {
+      "projectType": "application",
+      "root": "apps/projects-ui",
+      "sourceRoot": "apps/projects-ui/src",
+      "prefix": "projects",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/projects-ui",
+            "index": "apps/projects-ui/src/index.html",
+            "main": "apps/projects-ui/src/main.ts",
+            "polyfills": "apps/projects-ui/src/polyfills.ts",
+            "tsConfig": "apps/projects-ui/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/projects-ui/src/favicon.ico",
+              "apps/projects-ui/src/assets"
+            ],
+            "styles": ["apps/projects-ui/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/projects-ui/src/environments/environment.ts",
+                  "with": "apps/projects-ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "projects-ui:build:production"
+            },
+            "development": {
+              "browserTarget": "projects-ui:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "apps/projects-ui/proxy.conf.json"
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "projects-ui:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/projects-ui/src/**/*.ts",
+              "apps/projects-ui/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/projects-ui"],
+          "options": {
+            "jestConfig": "apps/projects-ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "projects-ui-e2e": {
+      "root": "apps/projects-ui-e2e",
+      "sourceRoot": "apps/projects-ui-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/projects-ui-e2e/cypress.json",
+            "devServerTarget": "projects-ui:serve:development",
+            "tsConfig": "apps/projects-ui-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "projects-ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/projects-ui-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "projects-ui"
+}
