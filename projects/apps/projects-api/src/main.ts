@@ -6,13 +6,21 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import { config as dotenvConfig } from 'dotenv';
+import path = require('path');
 
 import { router as authRouter} from './app/routes/auth';
+import { dbConnection } from './app/db/config';
 
 dotenvConfig();
 
 // Create express server/app
 const app = express();
+
+// Connect db
+dbConnection();
+
+// Public dir
+app.use(express.static(path.join(__dirname, '/public')));
 
 // CORS
 app.use(cors());
