@@ -29,14 +29,6 @@ export class AuthService {
         if (response.ok) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           localStorage.setItem('token', response.token!);
-          this._user = {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            name: response.name!,
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            email: response.email!,
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            uid: response.uid!,
-          };
         }
       }),
       map(valid => valid.ok),
@@ -48,18 +40,10 @@ export class AuthService {
     const url = `${this.baseUrl}/auth`;
     const body = { email, password };
     return this.http.post<AuthResponse>(url, body).pipe(
-      tap(response => {
-        if (response.ok) {
+      tap(({ ok, token }) => {
+        if (ok) {
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          localStorage.setItem('token', response.token!);
-          this._user = {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            name: response.name!,
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            email: response.email!,
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            uid: response.uid!,
-          };
+          localStorage.setItem('token', token!);
         }
       }),
       map(valid => valid.ok),
