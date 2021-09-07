@@ -35,6 +35,7 @@ const createUser = async(req, res = response) => {
         return res.status(201).json({
             ok: true,
             uid: dbUser.id,
+            email,
             name,
             msg: 'User created successfully',
             token
@@ -80,6 +81,8 @@ const loginUser = async(req, res = response) => {
             ok: true,
             uid: dbUser.id,
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            email: (dbUser as any).email,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             name: (dbUser as any).name,
             token,
         });
@@ -93,13 +96,16 @@ const loginUser = async(req, res = response) => {
 };
 
 const renewToken = async(req, res = response) => {
-    const { uid, name } = req;
-    const token = await generateJWT(uid, name);
+    const { uid } = req;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const dbUser: any = await Usuario.findById(uid);
+    const token = await generateJWT(uid, dbUser.name);
 
     return res.json({
         ok: true,
         uid,
-        name,
+        name: dbUser.name,
+        email: dbUser.email,
         msg: 'Renew success',
         token,
     });

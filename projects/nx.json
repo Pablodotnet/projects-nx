@@ -34,6 +34,13 @@
       "tags": [],
       "implicitDependencies": ["dou-coding"]
     },
+    "lxf-coding": {
+      "tags": []
+    },
+    "lxf-coding-e2e": {
+      "tags": [],
+      "implicitDependencies": ["lxf-coding"]
+    },
     "projects-api": {
       "tags": []
     },

@@ -1,9 +1,22 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MainPageComponent } from "./pages/main-page/main-page.component";
+import { ValidateTokenGuard } from "./shared/guards/validate-token.guard";
 
 const routes: Routes = [
-    { path: '', component: MainPageComponent }
+    {
+        path: 'auth',
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    },
+    {
+        path: 'dashboard',
+        loadChildren: () => import('./protected/protected.module').then(m => m.ProtectedModule),
+        canActivate: [ValidateTokenGuard],
+        canLoad: [ValidateTokenGuard]
+    },
+    {
+        path: '**',
+        redirectTo: 'dashboard'
+    }
 ];
 
 @NgModule({

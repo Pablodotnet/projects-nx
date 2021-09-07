@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
-import { FilterByInputPipe } from './pipes/filter-by-input.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    FilterByInputPipe
-  ],
-  imports: [],
-  exports: [
-    FilterByInputPipe
+  declarations: [],
+  imports: [
+    HttpClientModule,
   ],
   providers: [],
 })
