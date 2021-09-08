@@ -5,13 +5,15 @@
 
 import * as express from 'express';
 import * as cors from 'cors';
-import { config as dotenvConfig } from 'dotenv';
-import path = require('path');
+import * as dotenv from 'dotenv';
+import * as path from 'path';
 
 import { router as authRouter} from './app/routes/auth';
 import { dbConnection } from './app/db/config';
 
-dotenvConfig();
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+const CLIENT_BUILD_PATH = path.join(__dirname, '../projects-ui');
 
 // Create express server/app
 const app = express();
@@ -20,7 +22,7 @@ const app = express();
 dbConnection();
 
 // Public dir
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(CLIENT_BUILD_PATH));
 
 // CORS
 app.use(cors());
@@ -31,9 +33,9 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRouter);
 
-// Default route to test
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to projects-api!' });
+// Handle other routes
+app.get('*', (request, response) => {
+  response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
 });
 
 const port = process.env.PORT || 3333;
