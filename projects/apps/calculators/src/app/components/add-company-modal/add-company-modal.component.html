@@ -1,0 +1,133 @@
+<ibm-modal [open]="open" (overlaySelect)="closeModal()">
+    <ibm-modal-header (closeSelect)="closeModal()">
+        <h1>Add company</h1>
+    </ibm-modal-header>
+    <section class="bx--modal-content">
+        <ng-container *ngIf="companyForm">
+            <form [formGroup]="companyForm">
+                <ibm-label
+                    class="bx--margin-bottom-0_5"
+                    [invalid]="companyForm.controls.name.invalid && companyForm.controls.name.touched"
+                    invalidText="Is required">
+                        Company name
+                        <input
+                            ibmText
+                            [invalid]="companyForm.controls.name.invalid && companyForm.controls.name.touched"
+                            formControlName="name"
+                            placeholder="Write name">
+                </ibm-label>
+
+                <ibm-label
+                    class="bx--margin-bottom-0_5"
+                    [invalid]="companyForm.controls.grossSalary.invalid && companyForm.controls.grossSalary.touched"
+                    invalidText="Is required">
+                        Company gross salary
+                        <input
+                            ibmText
+                            [invalid]="companyForm.controls.grossSalary.invalid && companyForm.controls.grossSalary.touched"
+                            formControlName="grossSalary"
+                            placeholder="Write gross salary">
+                </ibm-label>
+
+                <ibm-label
+                    class="bx--margin-bottom-0_5"
+                    [invalid]="companyForm.controls.taxesPercentage.invalid && companyForm.controls.taxesPercentage.touched"
+                    invalidText="Is required">
+                        Percentage of taxes taken from gross salary
+                        <input
+                            ibmText
+                            [invalid]="companyForm.controls.taxesPercentage.invalid && companyForm.controls.taxesPercentage.touched"
+                            formControlName="taxesPercentage"
+                            placeholder="Write the percentage of taxes">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                        Percentage of saving fund
+                        <input
+                            ibmText
+                            formControlName="savingFundPercentage"
+                            placeholder="Write the percentage of saving fund">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Anual bonus percentage of anual gross salary
+                    <input
+                        ibmText
+                        formControlName="anualBonusPercentage"
+                        placeholder="Write the percentage for the anual bonus">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Monthly Home Office Bonus
+                    <input
+                        ibmText
+                        formControlName="homeOfficeBonus"
+                        placeholder="Write the quantity of home office bonus">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Monthly Cellphone Bonus
+                    <input
+                        ibmText
+                        formControlName="cellphoneBonus"
+                        placeholder="Write the quantity of cellphone bonus">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Monthly Food Coupons
+                    <input
+                        ibmText
+                        formControlName="foodCoupons"
+                        placeholder="Write the quantity of food coupons bonus">
+                </ibm-label>
+
+                <!-- Toggle for PTU -->
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Vacation days per year
+                    <input
+                        ibmText
+                        formControlName="vacationDays"
+                        placeholder="Write the quantity of vacation days per year">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Vacation bonus percentage
+                    <input
+                        ibmText
+                        formControlName="vacationBonusPercentage"
+                        placeholder="Write the quantity of vacation bonus percentage">
+                </ibm-label>
+
+                <ibm-label class="bx--margin-bottom-0_5">
+                    Christmas Bonus Days (Aguinaldo)
+                    <input
+                        ibmText
+                        formControlName="christmasBonusDays"
+                        placeholder="Write the quantity of christmas bonus days">
+                </ibm-label>
+
+                <!-- Toggle for Major Insurance -->
+
+                <!-- Toggle for Minor Insurance -->
+
+                <!-- Toggle for Life Insurance -->
+
+                <!-- Toggle for Dental Insurance -->
+
+                <!-- Toggle for Optical Insurance -->
+
+            </form>
+        </ng-container>
+    </section>
+    <ibm-modal-footer>
+        <button ibmButton="secondary" type="button" (click)="closeModal()">Cancel</button>
+        <button
+            ibmButton="primary"
+            type="button"
+            [disabled]="companyForm.invalid || isSaving"
+            (click)="handleSaveCompany()">
+                Save
+        </button>
+    </ibm-modal-footer>
+</ibm-modal>

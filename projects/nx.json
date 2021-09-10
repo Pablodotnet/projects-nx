@@ -27,6 +27,13 @@
     ]
   },
   "projects": {
+    "calculators": {
+      "tags": []
+    },
+    "calculators-e2e": {
+      "tags": [],
+      "implicitDependencies": ["calculators"]
+    },
     "dou-coding": {
       "tags": []
     },

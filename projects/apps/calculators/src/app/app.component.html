@@ -1,0 +1,65 @@
+<ibm-placeholder></ibm-placeholder>
+<main class="main-content">
+  <section class="main-content__header">
+    <h2>Calculate Payments</h2>
+    <button ibmButton="primary" type="button" (click)="handleOpenAddModal()">
+      Add company
+    </button>
+  </section>
+  <section class="main-content__results-container">
+    <ng-container *ngIf="savedCompanies$ | async as savedCompanies">
+      <div class="saved-companies-container">
+        <h4>Saved Companies</h4>
+        <ng-container *ngFor="let savedCompany of savedCompanies">
+          <div class="saved-company-item" (click)="handleAddSavedCompany(savedCompany)">
+            {{ savedCompany.name }}
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="companies$ | async as companies">
+      <section class="main-content__results">
+        <ng-container *ngFor="let company of companies">
+          <div class="company-card">
+            <h3>{{ company.name }}</h3>
+            <div class="company-card__content">
+              <div class="company-card__content--left">
+                <h4>Monthly</h4>
+    
+                <p>Gross Salary: {{ company.grossSalary | currency }} monthly</p>
+                <p>Taxes Percentage: {{ company.taxesPercentage }}%</p>
+                <p class="highlight">NET SALARY: {{ +company.grossSalary - (+company.grossSalary * (+company.taxesPercentage / 100)) | currency }} </p>
+                <p>Saving Fund Percentage: {{ company.savingFundPercentage }}%</p>
+                <p>Anual Bonus Percentage: {{ company.anualBonusPercentage }}%</p>
+                <p>Home Office Bonus: {{ company.homeOfficeBonus | currency}} monthly</p>
+                <p>Cellphone Bonus: {{ company.cellphoneBonus | currency }} monthly</p>
+                <p>Food Coupons: {{ company.foodCoupons | currency }} monthly</p>
+                <p>Vacation Days: {{ company.vacationDays }} per year</p>
+                <p>Vacation Bonus Percentage: {{ company.vacationBonusPercentage }}%</p>
+                <p>Christmas Bonus Days: {{ company.christmasBonusDays }} days</p>
+              </div>
+              <ng-container *ngIf="company.yearlyTotals">
+                <div>
+                  <h4>Yearly</h4>
+      
+                  <p>Gross Salary: {{ company.yearlyTotals.grossSalary | currency }} yearly</p>
+                  <p class="highlight">NET SALARY: {{ company.yearlyTotals.netSalary | currency }} yearly</p>
+                  <p>Saving Fund Total: {{ company.yearlyTotals.savingFund | currency }} yearly</p>
+                  <p>Anual Bonus Total: {{ company.yearlyTotals.anualBonus | currency }}</p>
+                  <p>Home Office Bonus Total: {{ company.yearlyTotals.homeOfficeBonus | currency }}</p>
+                  <p>Cellphone Bonus Total: {{ company.yearlyTotals.cellphoneBonus | currency }}</p>
+                  <p>Food Coupons Total: {{ company.yearlyTotals.foodCouponsBonus | currency }}</p>
+                  <p>Vacation Bonus Total: {{ company.yearlyTotals.vacationBonus | currency }}</p>
+                  <p>Christmas Bonus Total: {{ company.yearlyTotals.christmasBonus | currency }}</p>
+                  <div class="yearly-total-sum">
+                    Total: {{ company.yearlyTotals | calculateYearlyTotal | currency }}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+      </section>
+    </ng-container>
+  </section>
+</main>

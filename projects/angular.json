@@ -1,6 +1,124 @@
 {
   "version": 1,
   "projects": {
+    "calculators": {
+      "projectType": "application",
+      "root": "apps/calculators",
+      "sourceRoot": "apps/calculators/src",
+      "prefix": "projects",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/calculators",
+            "index": "apps/calculators/src/index.html",
+            "main": "apps/calculators/src/main.ts",
+            "polyfills": "apps/calculators/src/polyfills.ts",
+            "tsConfig": "apps/calculators/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/calculators/src/favicon.ico",
+              "apps/calculators/src/assets"
+            ],
+            "styles": ["apps/calculators/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/calculators/src/environments/environment.ts",
+                  "with": "apps/calculators/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "calculators:build:production"
+            },
+            "development": {
+              "browserTarget": "calculators:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "calculators:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/calculators/src/**/*.ts",
+              "apps/calculators/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/calculators"],
+          "options": {
+            "jestConfig": "apps/calculators/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "calculators-e2e": {
+      "root": "apps/calculators-e2e",
+      "sourceRoot": "apps/calculators-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/calculators-e2e/cypress.json",
+            "devServerTarget": "calculators:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "calculators:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/calculators-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
     "dou-coding": {
       "projectType": "application",
       "root": "apps/dou-coding",
