@@ -41,6 +41,13 @@
       "tags": [],
       "implicitDependencies": ["dou-coding"]
     },
+    "gifapp": {
+      "tags": []
+    },
+    "gifapp-e2e": {
+      "tags": [],
+      "implicitDependencies": ["gifapp"]
+    },
     "helper": {
       "tags": []
     },
@@ -50,6 +57,13 @@
     "lxf-coding-e2e": {
       "tags": [],
       "implicitDependencies": ["lxf-coding"]
+    },
+    "pablinext": {
+      "tags": []
+    },
+    "pablinext-e2e": {
+      "tags": [],
+      "implicitDependencies": ["pablinext"]
     },
     "pablitools": {
       "tags": []
