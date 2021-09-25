@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import Swal from 'sweetalert2';
-import { AuthService } from '../../../../../../../libs/helper/src/lib/services/auth.service';
+import { AuthService } from '@projects/helper';
 
 @Component({
   selector: 'projects-register',

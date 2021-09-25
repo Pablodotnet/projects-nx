@@ -1,0 +1,16 @@
+$sizes: (0, 1, 2, 3, 4, 5);
+$sides: (top, right, bottom left, auto);
+
+@each $side in $sides {
+    @each $size in $sizes {
+        .pablui--margin-#{$side}-#{$size} {
+            margin-#{$side}: #{$size}rem;
+        }
+    }
+}
+
+@each $size in $sizes {
+    .pablui--margin-#{$size} {
+        margin: #{$size}rem;
+    }
+}

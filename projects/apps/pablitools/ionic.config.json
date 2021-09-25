@@ -1,0 +1,7 @@
+{
+  "name": "pablitools",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

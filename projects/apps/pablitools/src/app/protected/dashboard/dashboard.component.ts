@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../../../../libs/helper/src/lib/services/auth.service';
+import { AuthService } from '@projects/helper';
 
 @Component({
   selector: 'projects-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent  {
+export class DashboardComponent {
 
   get user() {
     return this.authService.user;

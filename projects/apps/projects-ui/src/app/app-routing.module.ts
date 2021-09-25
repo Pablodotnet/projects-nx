@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ValidateTokenGuard } from "./shared/guards/validate-token.guard";
+import { ValidateTokenGuard } from "@projects/helper";
 
 const routes: Routes = [
     {

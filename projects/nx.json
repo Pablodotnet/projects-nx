@@ -41,12 +41,22 @@
       "tags": [],
       "implicitDependencies": ["dou-coding"]
     },
+    "helper": {
+      "tags": []
+    },
     "lxf-coding": {
       "tags": []
     },
     "lxf-coding-e2e": {
       "tags": [],
       "implicitDependencies": ["lxf-coding"]
+    },
+    "pablitools": {
+      "tags": []
+    },
+    "pablitools-e2e": {
+      "tags": [],
+      "implicitDependencies": ["pablitools"]
     },
     "projects-api": {
       "tags": []
